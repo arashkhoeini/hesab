@@ -16,6 +16,14 @@ class Database(object):
             con.commit()
             con.close()
     
+    def get_categories(self):
+        con = sqlite3.connect(DATABASE_NAME)
+        cur = con.cursor()
+        cur.execute('select distinct category from expence')
+        result =[cat[0] for cat in cur.fetchall() ]
+        con.close()
+        return result
+
     def save_expence(self, expence):
         con = sqlite3.connect(DATABASE_NAME)
         cur = con.cursor()

@@ -13,7 +13,12 @@ class Expence(object):
         self.description = description
     
     def get_db_date(self):
-        return self.date_time.strftime('%d %b %Y')
+        try:
+            return self.date_time.strftime('%d %b %Y')
+        except:
+            #date_time is it self db formated
+            return self.date_time
+        
 
     def save(self):
         """
@@ -34,7 +39,11 @@ class Income(object):
         self.description = description
 
     def get_db_date(self):
-        return self.date_time.strftime('%d %b %Y')
+        try:
+            return self.date_time.strftime('%d %b %Y')
+        except:
+            #date_time is it self db formated
+            return self.date_time
 
     def save(self):
         """

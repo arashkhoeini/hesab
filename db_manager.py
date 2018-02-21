@@ -24,6 +24,14 @@ class Database(object):
         con.close()
         return result
 
+    def get_sources(self):
+        con = sqlite3.connect(DATABASE_NAME)
+        cur = con.cursor()
+        cur.execute('select distinct source from income')
+        result =[src[0] for src in cur.fetchall() ]
+        con.close()
+        return result
+
     def save_expence(self, expence):
         con = sqlite3.connect(DATABASE_NAME)
         cur = con.cursor()
